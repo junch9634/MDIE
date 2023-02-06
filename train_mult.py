@@ -66,10 +66,10 @@ def main():
 
     print("===> Loading datasets")
     # print(opt.threads, opt.batchSize)
-    train_set = REDS_Dataset_MULT(dir='/home/dataset/NYU2v', mode='train', trans=transforms.ToTensor(), gt_crop_size=None)
+    train_set = REDS_Dataset_MULT(dir='/ailab_mat/dataset/NYU2v', mode='train', trans=transforms.ToTensor(), gt_crop_size=None)
     training_data_loader = DataLoader(dataset=train_set, num_workers=opt.threads, \
         batch_size=opt.batchSize, shuffle=True)
-    test_set = REDS_Dataset_MULT(dir='/home/dataset/NYU2v', mode='val', trans=transforms.ToTensor(), gt_crop_size=None)
+    test_set = REDS_Dataset_MULT(dir='/ailab_mat/dataset/NYU2v', mode='val', trans=transforms.ToTensor(), gt_crop_size=None)
     test_data_loader = DataLoader(dataset=test_set, num_workers=1, \
         batch_size=opt.batchSize, shuffle=False)
 

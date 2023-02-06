@@ -10,15 +10,14 @@
 
 
 ## Updates & TODO Lists
-- [X] (2022.12.22) README_TEMPLATES.md is released.
-- [ ] Adding more samples.
+- [X] (2023.02.06) README_TEMPLATES.md is released.
 
 
 ## Getting Started
 
 ### Environment Setup
 
-Tested on Titan RTX with python 3.7, pytorch 1.8.0, torchvision 0.9.0, CUDA 10.2 / 11.1 and detectron2 v0.5 / v0.6
+Tested on Titan RTX with python 3.7, pytorch 1.13.0, torchvision 0.14.0, CUDA 11.7
 
 1. Install dependencies
 ```
@@ -27,43 +26,74 @@ sudo apt update && sudo apt upgrade
 
 2. Set up a python environment
 ```
-conda create -n test_env python=3.8
-conda activate test_env
+conda create -n uien python=3.7
+conda activate uien
 pip install torch torchvision
-python setup.py build develop
+pip install opencv-python matplotlib scikit-learn
 ```
 
 ## Train & Evaluation
 
 ### Dataset Preparation
-1. Download `sample dataset' from MAT.
+1. Download `NYUv2 dataset' given link or from MAT .
+
 ```
-wget sample_dataset.com
+cd /ailab_mat/dataset/NYU2v
 ```
 
-2. Extract it to `sample folder`
+2. Organize the folders as follows
 ```
-tar -xvf sample_dataset.tar
-```
-
-3. Organize the folders as follows
-```
-test
-├── output
+NYU2v
+├── gt
+       └──1_0_0_0_0
+              ├──0.jpg
+              ├──1.jpg
+              └──...
+├── gt
+       └──pretrain_data
+              ├──4_0_0_0_0
+                     ├──0.jpg
+                     ├──1.jpg
+                     └──...
+              ├──4_1_0_0_0
+                     ├──0.jpg
+                     ├──1.jpg
+                     └──...
+              ├──4_0_1_0_0
+                     └──...
+              ├──4_0_0_1_0
+                     └──...
+              └──4_0_0_0_1
+                     └──...
 └── datasets
-       └── sample_dataset
-              └──annotations
-              └──train
-              └──val       
+       ├── multi_degrade
+              ├──0_0.jpg
+              ├──0_1.jpg
+              ├──0_2.jpg
+              ├──0_3.jpg
+              ├──0_4.jpg     
+              ├──1_0.jpg
+              ├──1_1.jpg
+              └──...
+       ├── multi_degrade_0
+              ├──0.jpg
+              ├──1.jpg
+              └──...
 ```
 ### Train on sample dataset
 ```
-python train_net.py --epoch 100
+python train.py --lr 1e-5 --nEpochs 100 --step 30 --gpus 0
+python train_sd.py --lr 1e-5 --nEpochs 100 --step 30 --gpus 0   # Super-Resolution and Deblurring
+python train_single.py --lr 1e-5 --nEpochs 100 --step 30 --gpus 0   # Only one method 
+# Super-Resolution, Deblurring, Denoising, Dehazing, Deraining
+python train_mult.py --lr 1e-5 --nEpochs 100 --step 30 --gpus 0 --model_type single   # no branch
+python train_mult.py --lr 1e-5 --nEpochs 100 --step 30 --gpus 0 --model_type multi-last-avg   # 5 branch (each branch ) play a role in each task / each branch output sum to fusion
+python train_mult.py --lr 1e-5 --nEpochs 100 --step 30 --gpus 0 --model_type multi-tot-avg    # 5 branch (each branch ) play a role in each task / sum loss output of branch / each branch output sum to fusion
 ```
 
 ### Evaluation on test dataset
 ```
-python test_net.py --vis_results
+python eval.py --cuda --gpus 0 --model model_srresnet.pth
 ```
 
 ## License
@@ -77,7 +107,7 @@ Some codes are rewritten from
 
 
 ## Authors
-- **Seunghyeok Back** [seungback](https://github.com/SeungBack)
+- **Changhyun Jun** [junch9634](https://github.com/junch9634)
 
 ## License
 Distributed under the MIT License.
