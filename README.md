@@ -1,43 +1,86 @@
-# Image-Enhancement-for-Multi-Degradation
+# README TEMPLATES
 
-## 깃 튜토리얼
 
-소스코드 블록은 다음과 같이 작성할 수 있습니다.
+- This is blank template to get started.
+- You can edit this template to suit your needs.
+- It is recommended to include an image in the readme.
+- You can find more awesome README templates from [google](https://www.google.com/search?q=awesome+readme+templates&oq=awe&aqs=chrome.0.69i59j69i57j69i61.1243j0j4&sourceid=chrome&ie=UTF-8)
 
-```c
-#include <stdio.h>
+<img src="./figures/screenshot.png" height="600">
 
-int main(void) {
-  printf("Hello World!");
-  return 0;
-}
+
+## Updates & TODO Lists
+- [X] (2022.12.22) README_TEMPLATES.md is released.
+- [ ] Adding more samples.
+
+
+## Getting Started
+
+### Environment Setup
+
+Tested on Titan RTX with python 3.7, pytorch 1.8.0, torchvision 0.9.0, CUDA 10.2 / 11.1 and detectron2 v0.5 / v0.6
+
+1. Install dependencies
+```
+sudo apt update && sudo apt upgrade
 ```
 
-링크는 다음과 같이 작성할 수 있습니다.
+2. Set up a python environment
+```
+conda create -n test_env python=3.8
+conda activate test_env
+pip install torch torchvision
+python setup.py build develop
+```
 
-[블로그 주소](https://blog.naver.com/ndb796)
+## Train & Evaluation
 
-순서 없는 목록은 다음과 같이 작성할 수 있습니다.
+### Dataset Preparation
+1. Download `sample dataset' from MAT.
+```
+wget sample_dataset.com
+```
 
-* 깃 튜토리얼
-  * 깃 Clone
-  * 깃 Pull
-  * 깃 Commit
-    * 깃 Commit 1)
-    * 깃 Commit 2)
+2. Extract it to `sample folder`
+```
+tar -xvf sample_dataset.tar
+```
 
-인용 구문은 다음과 같이 작성할 수 있습니다.
+3. Organize the folders as follows
+```
+test
+├── output
+└── datasets
+       └── sample_dataset
+              └──annotations
+              └──train
+              └──val       
+```
+### Train on sample dataset
+```
+python train_net.py --epoch 100
+```
 
-> '공부합시다.' - 나동빈 - 
+### Evaluation on test dataset
+```
+python test_net.py --vis_results
+```
 
-테이블은 다음과 같이 작성할 수 있습니다.
+## License
 
-이름|영어|정보|수학
----|---|---|---|
-나동빈|98점|87점|100점|
-홍길동|97점|78점|93점|
-이순신|89점|93점|97점|
+The source code of this repository is released only for academic use. See the [license](./LICENSE.md) file for details.
 
-강조는 다음과 같이 할 수 있습니다.
+## Notes
 
-**치킨** 먹다가 ~~두드리기~~났어요. ㅠㅠ
+Some codes are rewritten from
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/edit/master/BLANK_README.md)
+
+
+## Authors
+- **Seunghyeok Back** [seungback](https://github.com/SeungBack)
+
+## License
+Distributed under the MIT License.
+
+## Acknowledgments
+This work was supported by Institute for Information & Communications Technology Promotion(IITP) grant funded by Korea goverment(MSIT) (No.2019-0-01335, Development of AI technology to generate and validate the task plan for assembling furniture in the real and virtual environment by understanding the unstructured multi-modal information from the assembly manual.
