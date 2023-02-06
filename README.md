@@ -1,14 +1,3 @@
-# README TEMPLATES
-
-
-- This is blank template to get started.
-- You can edit this template to suit your needs.
-- It is recommended to include an image in the readme.
-- You can find more awesome README templates from [google](https://www.google.com/search?q=awesome+readme+templates&oq=awe&aqs=chrome.0.69i59j69i57j69i61.1243j0j4&sourceid=chrome&ie=UTF-8)
-
-<img src="./figures/screenshot.png" height="600">
-
-
 ## Updates & TODO Lists
 - [X] (2023.02.06) README_TEMPLATES.md is released.
 
