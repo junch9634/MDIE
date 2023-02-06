@@ -99,12 +99,6 @@ python eval.py --cuda --gpus 0 --model model_srresnet.pth
 
 The source code of this repository is released only for academic use. See the [license](./LICENSE.md) file for details.
 
-## Notes
-
-Some codes are rewritten from
-- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/edit/master/BLANK_README.md)
-
-
 ## Authors
 - **Changhyun Jun** [junch9634](https://github.com/junch9634)
 
