@@ -1,5 +1,5 @@
-# UIEN
-Unified Image Enhancement Network
+# MDIE
+Multi-Distored Image Enhancement
 - Super-Resolution
 - Deblurring
 - Denoising
