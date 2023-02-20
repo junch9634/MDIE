@@ -95,10 +95,6 @@ python train_mult.py --lr 1e-5 --nEpochs 100 --step 30 --gpus 0 --model_type mul
 python eval.py --cuda --gpus 0 --model model_srresnet.pth
 ```
 
-## License
-
-The source code of this repository is released only for academic use. See the [license](./LICENSE.md) file for details.
-
 ## Authors
 - **Changhyun Jun** [junch9634](https://github.com/junch9634)
 
